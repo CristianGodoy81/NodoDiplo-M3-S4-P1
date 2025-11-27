@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>/* By copilot */
+        :root {
+            --bg-main: #222f3e;
+            --bg-card: #393e46;
+            --color-text: #f1f1f1;
+            --color-title: #00adb5;
+            --color-border: #00adb5;
+            --color-btn-add: #00b894;
+            --color-btn-text: #222f3e;
+            --shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        body {
+            background: var(--bg-main);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--color-text);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-title);
+            font-size: 2.2rem;
+            margin: 2rem 0 1.5rem 0;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #0004;
+        }
+
+        form {
+            background: var(--bg-card);
+            border: 2px solid var(--color-border);
+            border-radius: 1.2rem;
+            box-shadow: var(--shadow);
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 2rem 2.2rem 1.5rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        label {
+            color: var(--color-title);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1.5px solid #636e72;
+            border-radius: 0.5rem;
+            background: #232931;
+            color: var(--color-text);
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            transition: border 0.15s, box-shadow 0.15s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: var(--color-title);
+            outline: none;
+            box-shadow: 0 2px 8px #00adb533;
+        }
+
+        button[type="submit"] {
+            background: var(--color-btn-add);
+            color: var(--color-btn-text);
+            font-size: 1.15rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.7rem;
+            padding: 0.8rem 0;
+            margin-top: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0002;
+            transition: background 0.15s, box-shadow 0.15s, transform 0.12s;
+        }
+
+        button[type="submit"]:hover {
+            background: #00e6a8;
+            box-shadow: 0 6px 24px #0004;
+            transform: scale(1.04);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            form {
+                max-width: 98vw;
+                padding: 1rem 0.5rem 1rem 0.5rem;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <title>agregar</title>
+</head>
+<body>
+    <h1>Formulario para agregar un superheroe a la base de datos</h1>
+    <form action="/api/heroes/agregar" method="POST">
+        
+        <label for="nombreSuperHeroe">Nombre del Superheroe</label>
+        <input type="text" name="nombreSuperHeroe" id="nombreSuperHeroe"><!-- required minlength="3" maxlength="60" -->
+        <br>
+        <label for="nombreReal">Nombre Real</label>
+        <input type="text" name="nombreReal" id="nombreReal"><!-- required minlength="3" maxlength="60" -->
+        <br>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad"><!-- required min="0" -->
+        <br>
+        <label for="planetaOrigen">Planeta de Origen</label>
+        <input type="text" name="planetaOrigen" id="planetaOrigen"><!---->
+        <br>
+        <label for="debilidad">Debilidad</label>
+        <input type="text" name="debilidad" id="debilidad"><!---->
+        <br>
+        <label for="poderes">Poderes</label>
+        <input type="text" name="poderes" id="poderes"><!-- required -->
+        <br>
+        <label for="aliados">Aliados</label>
+        <input type="text" name="aliados" id="aliados"><!---->
+        <br>
+        <label for="enemigos">Enemigos</label>
+        <input type="text" name="enemigos" id="enemigos"><!---->
+        <br>
+        <label for="creador">Creador</label>
+        <input type="text" name="creador" id="creador"><!---->
+        <br>
+
+        <button type="submit">Agregar</button>
+
+    </form>
+</body>
+</html>

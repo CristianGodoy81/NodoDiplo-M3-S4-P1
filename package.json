@@ -1,0 +1,27 @@
+{
+  "name": "nododiplo-m3-s4-p1",
+  "version": "1.0.0",
+  "description": "El objetivo de este practico es que refuercen los conceptos utilizados para generar vistas con EJS Layouts.\r Documentacion necesaria para resolver el tp:",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristianGodoy81/NodoDiplo-M3-S4-P1.git"
+  },
+  "author": "Cristian Godoy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CristianGodoy81/NodoDiplo-M3-S4-P1/issues"
+  },
+  "homepage": "https://github.com/CristianGodoy81/NodoDiplo-M3-S4-P1#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.3.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.0.0"
+  }
+}
