@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="<%= css %>">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title><%= title %></title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+    <!-- Contenido dinamico -->
+    <main>
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+</body>
+</html>

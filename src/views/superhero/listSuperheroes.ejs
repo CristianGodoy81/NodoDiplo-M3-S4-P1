@@ -1,0 +1,46 @@
+<section>
+    <h1>Superheroes</h1>
+    <section class="cards">
+        <% superheroes.forEach(superheroe=> { %>
+            <article class="card">
+                <a href="/api/heroes/obtener/<%= superheroe.id %>">
+                    <h2><%= superheroe.nombreSuperHeroe %></h2>
+                    <section class="info">
+                        <p>Nombre real: <%= superheroe.nombreReal %></p>
+                        <p>Edad: <%= superheroe.edad %></p>
+                        <p>Planeta de origen: <%= superheroe.planetaOrigen %></p>
+                        <p>Debilidad: <%= superheroe.debilidad %></p>
+                        <p>Poderes:
+                            <% superheroe.poderes.forEach(poder=>{ %>
+                                <ul>
+                                    <li><%= poder %></li>
+                                </ul>
+                            <% }); %>
+                        </p>
+                        <p>Aliados:
+                            <% superheroe.aliados.forEach(aliado=>{ %>
+                                <ul>
+                                    <li><%= aliado %></li>
+                                </ul>
+                            <% }); %>
+                        </p>
+                        <p>Enemigos:
+                            <% superheroe.enemigos.forEach(enemigo=>{ %>
+                                <ul>
+                                    <li><%= enemigo %></li>
+                                </ul>
+                            <% }); %>
+                        </p>
+                    </section>
+                </a>
+                <section class="botonera">
+                    <a href="/api/heroes/editar/<%= superheroe.id %>"><button class="editar">Editar</button></a>
+                    <form action="/api/heroes/eliminar/<%= superheroe.id %>?_method=DELETE" method="POST">
+                        <button type="submit" onclick="return confirm('¿Eliminar?')" class="eliminar">Eliminar</button>
+                    </form>
+                </section>
+            </article>
+        <% }); %>
+    </section>
+    <a href="/api/heroes/agregar"><button class="agregar">Agregar</button></a>
+</section>

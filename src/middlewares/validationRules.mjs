@@ -15,7 +15,6 @@ export const registerValidationRules = ()=>
             .isInt({min:0}).withMessage('Debe ser un numero entero positivo')
             .trim(),
         body('poderes')
-            //.notEmpty().withMessage('Campo obligatorio')
             .custom((value) => {
                 const poderesArr = value.split(',').map(p => p.trim()).filter(p => p.length > 0);
                 if (poderesArr.length === 0) {

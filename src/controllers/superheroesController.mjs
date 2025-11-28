@@ -12,7 +12,7 @@ import {
 import {
     renderizarSuperheroe,
     renderizarListaSuperheroes
-} from '../views/responseView.mjs';
+} from '../views/superhero/responseView.mjs';
 
 // Superheroes por ID
 export async function obtenerSuperheroePorIdController(req, res){
@@ -38,7 +38,11 @@ export async function obtenerTodosLosSuperheroesController(req, res){
         const superheroes = await obtenerTodosLosSuperheroes();
         // const superheroesFormateados = renderizarListaSuperheroes(superheroes);
         // res.status(200).json(superheroesFormateados);
-        return res.status(200).render('dashboard', {superheroes});
+        return res.status(200).render('superhero/listSuperheroes', {
+            title: 'Lista',
+            css: '/css/listSuperheroes.css',
+            superheroes: superheroes
+        });
     } catch(error) {
         return res.status(500).send({
             mensaje: 'Error al obtener los superheroes',
@@ -85,7 +89,10 @@ export async function obtenerSuperheroesMayoresDe30Controller(req, res){
 // Crear un superheroe
 export async function crearSuperheroeController(req, res){
     if(req.method === 'GET'){
-        return res.status(200).render('addSuperhero');
+        return res.status(200).render('superhero/addSuperhero', {
+            title: 'Agregar',
+            css: '/css/formSuperhero.css'
+        });
     }
     if(req.method === 'POST'){
         try {
@@ -125,7 +132,11 @@ export async function actualizarSuperheroePorIdController(req, res){
             if(!superheroe){
                 return res.status(404).send({mensaje: 'Superheroe no encontrado'});
             }
-            return res.status(200).render('editSuperhero', {superheroe});
+            return res.status(200).render('superhero/editSuperhero', {
+                title: 'Editar',
+                css: '/css/formSuperhero.css',
+                superheroe: superheroe
+            });
         }catch(error){
             return res.status(500).send({
                 mensaje: 'Error al obtener el superheroe',
@@ -137,6 +148,18 @@ export async function actualizarSuperheroePorIdController(req, res){
         try {
             const { id } = req.params;
             const datos = req.body;
+
+            // Convertir los string en array
+            if (typeof datos.poderes === 'string') {
+                datos.poderes = datos.poderes.split(',').map(p => p.trim()).filter(Boolean);
+            }
+            if (typeof datos.aliados === 'string' && datos.aliados.length > 0) {
+                datos.aliados = datos.aliados.split(',').map(a => a.trim()).filter(Boolean);
+            }
+            if (typeof datos.enemigos === 'string' && datos.enemigos.length > 0) {
+                datos.enemigos = datos.enemigos.split(',').map(e => e.trim()).filter(Boolean);
+            }
+
             const superheroeActualizado = await actualizarSuperheroe(id, datos);
             if (!superheroeActualizado){
                 return res.status(404).json({mensaje: 'Superheroe no encontrado'});
@@ -188,4 +211,12 @@ export async function eliminarSuperheroePorNombreController(req, res){
             error: error.message
         });
     }
+}
+
+// Dashboard
+export function dashboardSuperheroeController(req, res){
+    res.render('superhero/dashboard', {
+        title: 'Dashboard',
+        css: '/css/feedback.css'
+    })
 }

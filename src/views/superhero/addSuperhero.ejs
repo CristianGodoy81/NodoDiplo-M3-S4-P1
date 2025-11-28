@@ -1,0 +1,36 @@
+<section>
+    <h1>Agregar Superheroe</h1>
+    <form action="/api/heroes/agregar" method="POST">
+        
+        <label for="nombreSuperHeroe">Nombre del Superheroe</label>
+        <input type="text" name="nombreSuperHeroe" id="nombreSuperHeroe"><!-- required minlength="3" maxlength="60" -->
+        <br>
+        <label for="nombreReal">Nombre Real</label>
+        <input type="text" name="nombreReal" id="nombreReal"><!-- required minlength="3" maxlength="60" -->
+        <br>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad"><!-- required min="0" -->
+        <br>
+        <label for="planetaOrigen">Planeta de Origen</label>
+        <input type="text" name="planetaOrigen" id="planetaOrigen"><!---->
+        <br>
+        <label for="debilidad">Debilidad</label>
+        <input type="text" name="debilidad" id="debilidad"><!---->
+        <br>
+        <label for="poderes">Poderes</label>
+        <input type="text" name="poderes" id="poderes"><!-- required -->
+        <br>
+        <label for="aliados">Aliados</label>
+        <input type="text" name="aliados" id="aliados"><!---->
+        <br>
+        <label for="enemigos">Enemigos</label>
+        <input type="text" name="enemigos" id="enemigos"><!---->
+        <br>
+        <label for="creador">Creador</label>
+        <input type="text" name="creador" id="creador"><!---->
+        <br>
+
+        <button type="submit">Agregar</button>
+
+    </form>
+</section>

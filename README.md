@@ -11,14 +11,14 @@ Documentacion necesaria para resolver el tp:
 
 1. Leer toda la documentacion
 
-2 Generar un navbar que contenga los accesos directos a pagina principal(puede ser un landing), la lista de superheroes, agregar superheroes, si lo desean pueden agregar paginas adicionales
+2. Generar un navbar que contenga los accesos directos a pagina principal(puede ser un landing), la lista de superheroes, agregar superheroes, si lo desean pueden agregar paginas adicionales
 
-3 Generar un footer que tenga un copyright, se pueden incluir si lo desean datos de contacto
+3. Generar un footer que tenga un copyright, se pueden incluir si lo desean datos de contacto
 
-4 Generar un Layout que contenga el navbar y el footer
+4. Generar un Layout que contenga el navbar y el footer
 
-5 Generar cada una de las vistas que deseo se puedan renderizar
+5. Generar cada una de las vistas que deseo se puedan renderizar
 
-6 Prueba completa de funcionalidad, incluida las validaciones
+6. Prueba completa de funcionalidad, incluida las validaciones
 
-7 Subir todo a Github y colocar el enlace en el google sheets
+7. Subir todo a Github y colocar el enlace en el google sheets
