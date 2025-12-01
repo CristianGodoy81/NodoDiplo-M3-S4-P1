@@ -3,31 +3,99 @@
     <form action="/api/heroes/agregar" method="POST">
         
         <label for="nombreSuperHeroe">Nombre del Superheroe</label>
-        <input type="text" name="nombreSuperHeroe" id="nombreSuperHeroe"><!-- required minlength="3" maxlength="60" -->
+        <input type="text" name="nombreSuperHeroe" id="nombreSuperHeroe" placeholder="Ej: Superman" value="<%= (formData && formData.nombreSuperHeroe) ? formData.nombreSuperHeroe : '' %>"><!-- required minlength="3" maxlength="60" -->
+        <% if (errors){ %>
+            <% errors.forEach(error=>{ %>
+                <% if (error.path === "nombreSuperHeroe"){ %>
+                    <% if (error.msg === "Campo obligatorio"){ %>
+                        <style>.nombreSuperHeroeObligatorio{color: red;}</style>
+                    <% } %>
+                    <% if (error.msg === "Debe tener entre 3 y 60 caracteres"){ %>
+                        <style>.nombreSuperHeroeCaracteres{color: red;}</style>
+                    <% } %>
+                <% } %>
+            <% }) %>
+        <% } %>
+        <p class="nombreSuperHeroeObligatorio">Campo obligatorio</p>
+        <p class="nombreSuperHeroeCaracteres">Debe tener entre 3 y 60 caracteres</p>
         <br>
+
         <label for="nombreReal">Nombre Real</label>
-        <input type="text" name="nombreReal" id="nombreReal"><!-- required minlength="3" maxlength="60" -->
+        <input type="text" name="nombreReal" id="nombreReal" placeholder="Ej: Clark Kent" value="<%= (formData && formData.nombreReal) ? formData.nombreReal : '' %>"><!-- required minlength="3" maxlength="60" -->
+        <% if (errors){ %>
+            <% errors.forEach(error=>{ %>
+                <% if (error.path === "nombreReal"){ %>
+                    <% if (error.msg === "Campo obligatorio"){ %>
+                        <style>.nombreRealObligatorio{color: red;}</style>
+                    <% } %>
+                    <% if (error.msg === "Debe tener entre 3 y 60 caracteres"){ %>
+                        <style>.nombreRealCaracteres{color: red;}</style>
+                    <% } %>
+                <% } %>
+            <% }) %>
+        <% } %>
+        <p class="nombreRealObligatorio">Campo obligatorio</p>
+        <p class="nombreRealCaracteres">Debe tener entre 3 y 60 caracteres</p>
         <br>
+
         <label for="edad">Edad</label>
-        <input type="number" name="edad" id="edad"><!-- required min="0" -->
+        <input type="number" name="edad" id="edad" placeholder="Ej: 35" value="<%= (formData && formData.edad) ? formData.edad : '' %>"><!-- required min="0" -->
+        <% if (errors){ %>
+            <% errors.forEach(error=>{ %>
+                <% if (error.path === "edad"){ %>
+                    <% if (error.msg === "Campo obligatorio"){ %>
+                        <style>.edadObligatorio{color: red;}</style>
+                    <% } %>
+                    <% if (error.msg === "Debe ser un numero entero positivo"){ %>
+                        <style>.edadPositivo{color: red;}</style>
+                    <% } %>
+                <% } %>
+            <% }) %>
+        <% } %>
+        <p class="edadObligatorio">Campo obligatorio</p>
+        <p class="edadPositivo">Debe ser un numero entero positivo</p>
         <br>
+
         <label for="planetaOrigen">Planeta de Origen</label>
-        <input type="text" name="planetaOrigen" id="planetaOrigen"><!---->
+        <input type="text" name="planetaOrigen" id="planetaOrigen" placeholder="Ej: Krypton" value="<%= (formData && formData.planetaOrigen) ? formData.planetaOrigen : '' %>"><!---->
         <br>
+
         <label for="debilidad">Debilidad</label>
-        <input type="text" name="debilidad" id="debilidad"><!---->
+        <input type="text" name="debilidad" id="debilidad" placeholder="Ej: Kryptonita" value="<%= (formData && formData.debilidad) ? formData.debilidad : '' %>"><!---->
         <br>
-        <label for="poderes">Poderes</label>
-        <input type="text" name="poderes" id="poderes"><!-- required -->
+
+        <label for="poderes">Poderes (separados por coma)</label>
+        <input type="text" name="poderes" id="poderes" placeholder="Ej: Fuerza, Vuelo, Rayos laser, etc." value="<%= (formData && formData.poderes) ? formData.poderes : '' %>"><!-- required -->
+        <% if (errors){ %>
+            <% errors.forEach(error=>{ %>
+                <% if (error.path === "poderes"){ %>
+                    <% if (error.msg === "Debe ingresar al menos un poder"){ %>
+                        <style>.poderesMinimoUno{color: red;}</style>
+                    <% } %>
+                    <% if (error.msg === "Cada poder debe ser un string"){ %>
+                        <style>.poderesString{color: red;}</style>
+                    <% } %>
+                    <% if (error.msg === "Cada poder debe tener entre 3 y 60 caracteres"){ %>
+                        <style>.poderesCaracteres{color: red;}</style>
+                    <% } %>
+                <% } %>
+            <% }) %>
+        <% } %>
+        <p class="poderesMinimoUno">Debe ingresar al menos un poder</p>
+        <p class="poderesString">Cada poder debe ser un string</p>
+        <p class="poderesCaracteres">Cada poder debe tener entre 3 y 60 caracteres</p>
         <br>
-        <label for="aliados">Aliados</label>
-        <input type="text" name="aliados" id="aliados"><!---->
+
+        <label for="aliados">Aliados (separados por coma)</label>
+        <input type="text" name="aliados" id="aliados" placeholder="Ej: Lois Lane, Justice League, etc." value="<%= (formData && formData.aliados) ? formData.aliados : '' %>"><!---->
         <br>
-        <label for="enemigos">Enemigos</label>
-        <input type="text" name="enemigos" id="enemigos"><!---->
+
+        <label for="enemigos">Enemigos (separados por coma)</label>
+        <input type="text" name="enemigos" id="enemigos" placeholder="Ej: Lex Luthor, Zod, etc." value="<%= (formData && formData.enemigos) ? formData.enemigos : '' %>"><!---->
         <br>
+
         <label for="creador">Creador</label>
-        <input type="text" name="creador" id="creador"><!---->
+        <input type="text" name="creador" id="creador" placeholder="Ej: DC" value="<%= (formData && formData.creador) ? formData.creador : '' %>"><!---->
         <br>
 
         <button type="submit">Agregar</button>

@@ -1,9 +1,7 @@
 <section>
-    <h1>Superheroes</h1>
+    <h1>Superheroe</h1>
     <section class="cards">
-        <% superheroes.forEach(superheroe=> { %>
             <article class="card">
-                <a href="/api/heroes/obtener/<%= superheroe.id %>">
                     <h2><%= superheroe.nombreSuperHeroe %></h2>
                     <section class="info">
                         <p>Nombre real: <%= superheroe.nombreReal %></p>
@@ -33,7 +31,6 @@
                         </p>
                         <p>Creador: <%= superheroe.creador %></p>
                     </section>
-                </a>
                 <section class="botonera">
                     <a href="/api/heroes/editar/<%= superheroe.id %>"><button class="editar">Editar</button></a>
                     <form action="/api/heroes/eliminar/<%= superheroe.id %>?_method=DELETE" method="POST">
@@ -41,7 +38,6 @@
                     </form>
                 </section>
             </article>
-        <% }); %>
     </section>
     <a href="/api/heroes/agregar"><button class="agregar">Agregar</button></a>
 </section>

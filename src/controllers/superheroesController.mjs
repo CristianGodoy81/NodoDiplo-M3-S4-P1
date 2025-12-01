@@ -20,10 +20,20 @@ export async function obtenerSuperheroePorIdController(req, res){
         const {id} = req.params;
         const superheroe = await obtenerSuperheroePorId(id);
         if(!superheroe){
-            return res.status(404).send({mensaje: 'Superheroe no encontrado'});
+            //return res.status(404).send({mensaje: 'Superheroe no encontrado'});
+            return res.status(404).render('error404', {
+                title: 'Pagina no encontrada',
+                css: '/css/feedback.css',
+                msg: 'Superheroe no encontrado'
+            });
         }
-        const superheroeFormateado = renderizarSuperheroe(superheroe);
-        return res.status(200).json(superheroeFormateado);
+        //const superheroeFormateado = renderizarSuperheroe(superheroe);
+        //return res.status(200).json(superheroeFormateado);
+        return res.status(200).render('superhero/getSuperhero', {
+            superheroe: superheroe,
+            title: superheroe.nombreSuperHeroe,
+            css: '/css/listSuperheroes.css'
+        });
     } catch(error) {
         return res.status(500).send({
             mensaje: 'Error al obtener el superheroe',
@@ -91,7 +101,9 @@ export async function crearSuperheroeController(req, res){
     if(req.method === 'GET'){
         return res.status(200).render('superhero/addSuperhero', {
             title: 'Agregar',
-            css: '/css/formSuperhero.css'
+            css: '/css/formSuperhero.css',
+            formData: null,
+            errors: null
         });
     }
     if(req.method === 'POST'){

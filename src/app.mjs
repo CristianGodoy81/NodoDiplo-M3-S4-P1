@@ -39,13 +39,13 @@ app.get('/', (req, res)=>{
 });
 app.get('/about', (req, res)=>{
     res.render('about', {
-        title: 'Acerca de nosotros',
+        title: 'Acerca de',
         css: '/css/feedback.css'
     });
 });
 app.get('/contact', (req, res)=>{
     res.render('contact', {
-        title: 'Contactenos',
+        title: 'Contacto',
         css: '/css/feedback.css'
     });
 });
